@@ -3,12 +3,12 @@
      <b-col>
         <iq-card class="table-padding-top">
           <template v-slot:headerTitle>
-            <h4 class="card-title">Today Request</h4>
+            <h4 class="card-title">Today's Request</h4>
           </template>
           <template v-slot:body>
             <b-row>
               <b-col md="12" class="table-responsive">
-                <b-table bordered hover :items="rows" :fields="columns" foot-clone>
+                <b-table bordered hover :items="rows" :fields="columns">
                   <template v-slot:cell(name)="data">
                     <span v-if="!data.item.editable">{{ data.item.name }}</span>
                     <input type="text" v-model="data.item.name" v-else class="form-control">
@@ -17,25 +17,25 @@
                     <span v-if="!data.item.editable">{{ data.item.employeeNumber }}</span>
                     <input type="text" v-model="data.item.employeeNumber" v-else class="form-control">
                   </template>
-                  <template v-slot:cell(devision)="data">
-                    <span v-if="!data.item.editable">{{ data.item.devision }}</span>
-                    <input type="text" v-model="data.item.devision" v-else class="form-control">
-                  </template>
-                  <template v-slot:cell(department)="data">
-                    <span v-if="!data.item.editable">{{ data.item.department }}</span>
-                    <input type="text" v-model="data.item.department" v-else class="form-control">
+                  <template v-slot:cell(devisionDepartment)="data">
+                    <span v-if="!data.item.editable">{{ data.item.devisionDepartment }}</span>
+                    <input type="text" v-model="data.item.devisionDepartment" v-else class="form-control">
                   </template>
                   <template v-slot:cell(subGroup)="data">
                     <span v-if="!data.item.editable">{{ data.item.subGroup }}</span>
                     <input type="text" v-model="data.item.subGroup" v-else class="form-control">
                   </template>
-                  <template v-slot:cell(status)="data">
-                    <span v-if="!data.item.editable">{{ data.item.status }}</span>
-                    <input type="text" v-model="data.item.status" v-else class="form-control">
+                  <template v-slot:cell(overtime)="data">
+                    <span v-if="!data.item.editable">{{ data.item.overtime }}</span>
+                    <input type="text" v-model="data.item.overtime" v-else class="form-control">
                   </template>
-                  <template v-slot:cell(phone)="data">
-                    <span v-if="!data.item.editable">{{ data.item.phone }}</span>
-                    <input type="text" v-model="data.item.phone" v-else class="form-control">
+                  <template v-slot:cell(approvedBy)="data">
+                    <span v-if="!data.item.editable">{{ data.item.approvedBy }}</span>
+                    <input type="text" v-model="data.item.approvedBy" v-else class="form-control">
+                  </template>
+                  <template v-slot:cell(approvedStatus)="data">
+                    <span v-if="!data.item.editable">{{ data.item.approvedStatus }}</span>
+                    <input type="text" v-model="data.item.approvedStatus" v-else class="form-control">
                   </template>
                 </b-table>
               </b-col>
@@ -80,7 +80,6 @@
                   :taskView="true"
                   :scheduleView="true"
                   :month="month"
-                  :week="week"
                   :disableDblClick="disableDblClick"
                   :isReadOnly="isReadOnly"
                   @clickSchedule="onClickSchedule"
@@ -134,10 +133,6 @@ export default {
       month: {
         startDayOfWeek: 0
       },
-      week: {
-        showTimezoneCollapseButton: true,
-        timezonesCollapsed: true
-      },
       taskView: true,
       scheduleView: true,
       useDetailPopup: true,
@@ -146,86 +141,22 @@ export default {
       columns: [
         { label: 'Name', key: 'name', class: 'text-left' },
         { label: 'Employee Number', key: 'employeeNumber', class: 'text-left' },
-        { label: 'Devision', key: 'devision', class: 'text-left' },
-        { label: 'Department', key: 'department', class: 'text-left' },
+        { label: 'Devision/Department', key: 'devisionDepartment', class: 'text-left' },
         { label: 'Sub Gruop', key: 'subGroup', class: 'text-left' },
-        { label: 'Status', key: 'status', class: 'text-left' },
-        { label: 'Phone', key: 'phone', class: 'text-left' }
+        { label: 'Overtime', key: 'overtime', class: 'text-left' },
+        { label: 'Approved by', key: 'approvedBy', class: 'text-left' },
+        { label: 'Approved Status', key: 'approvedStatus', class: 'text-left' }
       ],
       rows: [
         {
           id: 1,
-          name: 'Tiger Nixon',
-          position: 'System Architect',
-          office: 'Edinburgh',
-          age: '61',
-          start_date: '2011/04/25',
-          salary: '$320,800'
-        },
-        {
-          id: 2,
-          name: 'Garrett Winters',
-          position: 'Accountant',
-          office: 'Tokyo',
-          age: '63',
-          start_date: '2011/06/19',
-          salary: '$200,600'
-        },
-        {
-          id: 3,
-          name: 'Ashton Cox',
-          position: 'Junior Technical Author',
-          office: 'San Francisco',
-          age: '69',
-          start_date: '2011/01/20',
-          salary: '$140,500'
-        },
-        {
-          id: 4,
-          name: 'Cedric Kelly',
-          position: 'Senior Javascript Developer',
-          office: 'Edinburgh',
-          age: '42',
-          start_date: '2011/02/02',
-          salary: '$360,500'
-        },
-        {
-          id: 5,
-          name: 'Airi Satou',
-          position: 'Accountant',
-          office: 'Tokyo',
-          age: '39',
-          start_date: '2011/08/11',
-          salary: '$170,800'
-        },
-        {
-          id: 1,
-          name: 'Tiger Nixon',
-          position: 'System Architect',
-          office: 'Edinburgh',
-          age: '61',
-          start_date: '2011/04/25',
-          salary: '$320,800'
-        },
-
-        {
-          id: 5,
-          name: 'Airi Satou',
-          position: 'Accountant',
-          office: 'Tokyo',
-          age: '39',
-          start_date: '2011/08/11',
-          salary: '$170,800'
-        },
-        {
-          id: 1,
-          name: 'Tiger Nixon',
-          position: 'System Architect',
-          office: 'Edinburgh',
-          age: '61',
-          start_date: '2011/04/25',
-          salary: '$320,800',
-          editable: false
+          name: 'TheGIZzzz',
+          employeeNumber: 1212312121,
+          devisionDepartment: 'Marvel',
+          subGroup: 'Ant man',
+          overtime: '20.00',
+          approvedBy: 'God',
+          approvedStatus: 'Yessss'
         }
       ]
     }
@@ -281,17 +212,17 @@ export default {
       }
     },
     onClickSchedule (res) {
-      /* console.group('onClickSchedule')
+      console.group('onClickSchedule')
       console.log('MouseEvent : ', res.event)
       console.log('Calendar Info : ', res.calendar)
       console.log('Schedule Info : ', res.schedule)
-      console.groupEnd() */
+      console.groupEnd()
     },
     onClickDayname (res) {
       // view : week, day
-      /* console.group('onClickDayname')
+      console.group('onClickDayname')
       console.log(res.date)
-      console.groupEnd() */
+      console.groupEnd()
     },
     onBeforeUpdateSchedule (res) {
       const idx = this.scheduleList.findIndex(item => item.id === res.schedule.id)
@@ -313,12 +244,13 @@ export default {
     default () {
       return {
         id: this.rows.length,
+        name: '',
         employeeNumber: '',
-        devision: '',
-        department: '',
+        devisionDepartment: '',
         subGroup: '',
-        status: '2011/04/25',
-        phone: '$0'
+        overtime: '',
+        approvedBy: '',
+        approvedStatus: ''
       }
     },
     remove (item) {

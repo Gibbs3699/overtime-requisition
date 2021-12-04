@@ -34,6 +34,39 @@
             </b-row>
           </template>
         </iq-card>
+                <iq-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">DEDE Over Time Requisition list on .... </h4>
+          </template>
+          <template v-slot:body>
+            <b-row>
+              <b-col md="12" class="table-responsive">
+                <b-table bordered hover :items="rows" :fields="columns" foot-clone>
+                  <template v-slot:cell(date)="data">
+                    <span v-if="!data.item.editable">{{ data.item.date }}</span>
+                    <input type="text" v-model="data.item.date" v-else class="form-control">
+                  </template>
+                  <template v-slot:cell(time)="data">
+                    <span v-if="!data.item.editable">{{ data.item.time }}</span>
+                    <input type="text" v-model="data.item.time" v-else class="form-control">
+                  </template>
+                  <template v-slot:cell(remark)="data">
+                    <span v-if="!data.item.editable">{{ data.item.remark }}</span>
+                    <input type="text" v-model="data.item.remark" v-else class="form-control">
+                  </template>
+                  <template v-slot:cell(status)="data">
+                    <span v-if="!data.item.editable">{{ data.item.status }}</span>
+                    <input type="text" v-model="data.item.status" v-else class="form-control">
+                  </template>
+                  <template v-slot:cell(approved)="data">
+                    <span v-if="!data.item.editable">{{ data.item.approved}}</span>
+                    <input type="text" v-model="data.item.approved" v-else class="form-control">
+                  </template>
+                </b-table>
+              </b-col>
+            </b-row>
+          </template>
+        </iq-card>
       </b-col>
     </b-row>
 </template>

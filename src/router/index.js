@@ -78,7 +78,7 @@ const FormCheckboxes = () => import('../views/Forms/FormCheckboxes')
 const Profile = () => import('../views/User/Profile')
 const ProfileEdit = () => import('../views/User/ProfileEdit')
 const AddUser = () => import('../views/User/AddUser')
-const SocialApp = () => import('../views/Apps/Social/SocialApp')
+// const SocialApp = () => import('../views/Apps/Social/SocialApp')
 /* Todo */
 // const TodoListing = () => import('../views/Apps/Todo/TodoListing')
 // const ChatIndex = () => import('../views/Apps/Chat/Index')
@@ -87,9 +87,12 @@ Vue.use(VueRouter)
 const childRoutes = (prop, mode) => [
   {
     path: '/',
-    name: prop + '.list',
-    meta: { auth: true, name: 'Social App' },
-    component: SocialApp
+    name: prop + '.calendar',
+    meta: { auth: true, name: 'Calendar', img: require('../assets/images/page-img/profile-bg6.jpg') },
+    component: Calendar
+    // name: prop + '.list',
+    // meta: { auth: true, name: 'Social App' },
+    // component: SocialApp
   },
   {
     path: '/profile',

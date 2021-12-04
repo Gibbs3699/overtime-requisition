@@ -321,7 +321,8 @@ export default {
     }
   },
   methods: {
-    miniSidebar () {
+    miniSidebar (val) {
+      console.log('After toggle: ', val)
       this.$emit('toggle')
     },
     openSearch () {
