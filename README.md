@@ -1,5 +1,4 @@
-# vue-dashboard
-# DEDE
+# DEDE overtime requisition
 
 ## Project setup
 ```
